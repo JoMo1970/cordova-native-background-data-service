@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-backgroundupdate" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>BackgroundDataServicePlugin</name>
+  <js-module name="BackgroundDataServicePlugin" src="www/BackgroundDataServicePlugin.js">
+    <clobbers target="BackgroundDataServicePlugin" />
+  </js-module>
+  <platform name="android">
+    <!--Plugin Declaration-->
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="BackgroundDataServicePlugin">
+        <param name="android-package" value="com.albaresapps.plugins.BackgroundDataServicePlugin" />
+      </feature>
+    </config-file>
+    <!--Android manifest service declation-->
+    <config-file parent="./application" target="AndroidManifest.xml">
+      <service android:name="com.albaresapps.plugins.BackgroundDataServicePlugin$DataService" />
+          <!--<intent-filter>
+              <action android:name="com.albaresapps.plugins.BackgroundDataServicePlugin$DataService" />
+          </intent-filter>
+      </service>-->
+    </config-file>
+    <source-file src="src/android/BackgroundDataServicePlugin.java" target-dir="src/com/albaresapps/plugins" />
+    <!--<source-file src="src/android/data/DataService.java" target-dir="src/com/albaresapps/plugins/data" />-->
+  </platform>
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="BackgroundDataServicePlugin">
+        <param name="ios-package" value="BackgroundDataServicePlugin" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/BackgroundDataServicePlugin.m" />
+  </platform>
+</plugin>
